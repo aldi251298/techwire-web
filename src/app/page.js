@@ -8,10 +8,17 @@ async function fetchWordPressPosts() {
         title
         slug
         date
-        // Kita akan tambahkan field lain di sini nanti
-      }
-    }
-  }
+        featuredImage { // Tambahkan blok ini
+          node {
+            sourceUrl
+            altText
+          }
+        }
+        categories { // Tambahkan blok ini
+          nodes {
+            name
+            slug
+             }
 `;
         nodes {
           id
