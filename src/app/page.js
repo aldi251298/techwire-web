@@ -1,13 +1,14 @@
 // Fungsi untuk mengirim permintaan ke WordPress GraphQL API
 async function fetchWordPressPosts() {
   const query = `
-    query GetPosts {
-      posts {first: 10, where: { orderby: { field: DATE, order: DESC } }) { // Ambil 10 terbaru
+  query GetPosts {
+    posts(first: 10, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         id
         title
         slug
         date
+        excerpt // Tambahkan ini
         featuredImage { // Tambahkan blok ini
           node {
             sourceUrl
@@ -18,7 +19,11 @@ async function fetchWordPressPosts() {
           nodes {
             name
             slug
-             }
+          }
+        }
+      }
+    }
+  }
 `;
         nodes {
           id
