@@ -2,7 +2,17 @@
 async function fetchWordPressPosts() {
   const query = `
     query GetPosts {
-      posts {
+      posts {first: 10, where: { orderby: { field: DATE, order: DESC } }) { // Ambil 10 terbaru
+      nodes {
+        id
+        title
+        slug
+        date
+        // Kita akan tambahkan field lain di sini nanti
+      }
+    }
+  }
+`;
         nodes {
           id
             title
